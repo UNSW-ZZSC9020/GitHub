@@ -1,19 +1,24 @@
 # Git and GitHub
 
-This document is a brief introduction to some of the main git commands and the GitHub repository. This course will use GitHub as the primary repository for data and source code to support remote and distributed development. We will also use GitHub as a reference point, in which the groups will list all the project management, communication and development tools that they will use during the course. Each group will have its repository, and the course lectures will be part of the repository team. This setup will allow the lecturers to follow the project development and assist the groups with potential issues.
+This document is a brief introduction to some of the main git commands and the GitHub repository. This course will use GitHub as the primary repository for data and source code to support remote and distributed development. Each group will have its repository, and the course lectures will be part of the repository team. This setup will allow the lecturers to follow the project development and assist the groups with potential issues.
 
 ## Objectives
 
-* Setup a private GitHub repository and configure it to be shared among the team members and course lecturers.
+* Set up a GitHub repository and configure it to be shared among the team members and course lecturers.
 * Understand how a GitHub repository works and how to organise the course code, data and documentation using this tool
-* Learn how to use git and GitHub main commands using the command line interface.
+* Learn how to use git and GitHub main commands using the command-line interface.
+* Clone the course project repository and access the project data.
+
+## Before We Start
+
+If you are already familiar with GitHub, you can skip reading this document, clone the [course repository](https://github.com/UNSW-ZZSC9020/project) and start working. If you plan to work with Python, an alternative is to use [Google Colab](https://colab.research.google.com/notebooks/intro.ipynb). We create a [notebook](https://github.com/UNSW-ZZSC9020/project/blob/main/src/GoogleColab.ipynb) that shows how you can clone the project repository directly from Google Colab. 
 
 ## GitHub Account
 
-GitHub is a version control platform (like Bitbucket or GitLab) that uses git. It is an excellent way for developers to collaborate. During this course, the use of GitHub with a private repository is compulsory. GitHub will be the primary resource for code collaboration between the team members as well as the course lecturers. If you do not have a GitHub account associated with your UNSW institutional email, you will have to create an account before starting.
+GitHub is a version control platform (like Bitbucket or GitLab) that uses git. It is an excellent way for developers to collaborate. During this course, the use of GitHub with a private repository is compulsory. GitHub will be the primary resource for code collaboration between the team members and the course lecturers. If you do not have a GitHub account associated with your UNSW institutional email, you will have to create an account before starting.
 
-1. If you DON’T have a GitHub account, [join here](https://github.com/) using your institutional email. The student email (zID@student.unsw.edu.au) wil be necessary to join [GitHub Education](https://education.github.com/) later.
-2. If you have a GitHub account but your email address does not belong to UNSW, you can add another email in the [settings page](https://github.com/settings/emails), as illustrated in the next figure.
+1. If you DON’T have a GitHub account, [join here](https://github.com/) using your institutional email. The student email (zID@student.unsw.edu.au) will be necessary to join [GitHub Education](https://education.github.com/) later.
+2. If you have a GitHub account, but your email address does not belong to UNSW, you can add another email in the [settings page](https://github.com/settings/emails), as illustrated in the following figure.
 
 ![List of GitHub emails](images/GitHub_email.png)
 
@@ -24,11 +29,11 @@ Make sure to verify your email address. If you do not get an email straight away
 There are two ways to authenticate with GitHub when you are working on your machine:
 
 1. Use your username and password every time.
-2. Authenticate using your SSH key which effectively links a particular machine to GitHub.
+2. Authenticate using your SSH key, which effectively links a particular machine to GitHub.
 
-Option 1 can get quite tedious so we will be using the second option. If you are using Microsot Windows, skip steps 1 to 4 below, install [PuTTYgen](https://www.puttygen.com/) then use it for steps 5 and 6. Open a terminal and run the following commands in terminal (use the email you have used for GitHub):
+Option 1 can get quite tedious, so that we will be using the second option. If you are using Microsoft Windows, skip steps 1 to 4 below, install [PuTTYgen](https://www.puttygen.com/) then use it for steps 5 and 6. Open a terminal and run the following commands in the terminal (use the email you have used for GitHub):
 
-1. `ssh-keygen -t rsa -C "github_email@example.com"`
+1. `ssh-keygen -t rsa -C “github_email@example.com”`
 2. Hit Enter three times to accept the default location and skip the password creation step. (You can ignore the output of this command)
 3. cat ~/.ssh/id_rsa.pub
 4. Copy the entire output of the above command, including the ssh-rsa at the start
@@ -39,14 +44,14 @@ Option 1 can get quite tedious so we will be using the second option. If you are
 
 ## GitHub Education
 
-[GitHub Education](https://education.github.com/) is a collection of tools and events freely available for students and teachers. One of the tools offered in the GitHub Student Developer Pack which includes a GitHub Pro account while you are a student. GitHub Pro accounts provide access to private repositories with more than three collaborators.  
+[GitHub Education](https://education.github.com/) is a collection of tools and events freely available for students and teachers. One of the GitHub Student Developer Pack tools includes a GitHub Pro account while you are a student. GitHub Pro accounts provide access to private repositories with more than three collaborators.  
 
-Go to [GitHub Student Developer Pack](https://education.github.com/pack) and click on ``Get your pack'' button. Follow the instructions that include uploading a proof that your are currelty an UNSW student.
+Go to [GitHub Student Developer Pack](https://education.github.com/pack) and click on “Get your pack” button. Follow the instructions that include uploading proof that you are currently a UNSW student.
 
 
 ## Git installation
 
-Throughout the course, you will need to be comfortable with git. It comes pre-installed on most Unix machines. To check if git is installed on your local machine use the command
+Throughout the course, you will need to be comfortable with git. It comes pre-installed on most Unix machines. To check if git is installed on your local machine, use the command:
 
 `git status`
 
@@ -56,7 +61,7 @@ If it is installed, you will see something like
 
 If you do not have git installed, you will see something like
 
-`bash: git: command not recognized`
+`bash: git: command not recognised`
 
 If this is the case, you will have to set it up using the following instructions:
 
@@ -67,26 +72,26 @@ If this is the case, you will have to set it up using the following instructions
 Configure git if you have not used it before with the following commands (including the quotes):
 
 ```
-git config --global user.name "Your Name"
-git config --global user.email "github_email@example.com"
+git config --global user.name “Your Name”
+git config --global user.email “github_email@example.com”
 ```
 
 ## Clone your first repo
 
-Cloning a repo (a repo is just a directory that is linked with git) is how the codebase is linked from GitHub to your local computer so changes you make can be saved and shared with others. It is the step before you can start making changes and contributing. A repo can be cloned at any time by someone who has access, so they can start working whenever they want. When a repo is cloned, all code that is uploaded on the server is copied to a desired location on your local machine.
+Cloning a repo (a repo is just a directory linked with git) is how the codebase is linked from GitHub to your local computer so changes you make can be saved and shared with others. It is the step before you can start making changes and contributing. A repo can be cloned at any time by someone who has access to start working whenever they want. When a repo is cloned, all code uploaded on the server is copied to a desired location on your local machine.
 
-1. Click on the [repo link](Https://). You will be redirected to the repo page.
-2. Click on the `Clone or download` green button.
+1. Click on the [repo link](https://github.com/UNSW-ZZSC9020/GitHub). You will be redirected to the repo page.
+2. Click on the `Code` green button.
 
-![GitHub clone or download button](images/GitHub-clone-or-download.png)
+![GitHub code button](images/GitHub-code-button.png)
 
-3. If the title for the dropdown box is Clone with HTTPS click on the `Use SSH` link on the right. The box should look like the one below
+3. If the title for the dropdown box is Clone with HTTPS, click on the `SSH` link. The box should look like the one below
 
 ![Use SSH link](images/GitHub-use-ssh-link.png)
 
 4. Copy the link in the text box
 5. Open a Terminal and navigate to the folder you want the repo to be in
-6. `git clone [link]` (Replace `[link]` with the copied link from above step)
+6. `git clone [link]` (Replace `[link]` with the copied link from the above step)
 7. Type ls to ensure the folder has been copied correctly
 8. `cd [repo_name]` to navigate into the cloned repo
 9. Type ls again to see the copied files.
@@ -109,7 +114,7 @@ git commit -m"Detailed message describing the changes" # Commit
 git push # Push
 ```
 
-Let's make a first commit by adding a Markdown file in the repo.
+Let’s make the first commit by adding a Markdown file in the repo.
 
 1. Create a blank file called HelloWorld.md in the repo directory
 2. Add some Markdown text. Markdown is a markup language with plain text formatting syntax similar to HTML.
@@ -124,7 +129,7 @@ However, you can explore more with a list of some common Markdown tags:
 
 3. Go back to your terminal and enter the following commands:
 4. `git add HelloWorld.md`
-5. `git commit -m "Created first Markdown HelloWorld.md"`
+5. `git commit -m “Created first Markdown HelloWorld.md”`
 6. `git push`
 7. Go back to GitHub and confirm that your changes have been pushed to the server.
 
@@ -142,7 +147,7 @@ Unfortunately, at the moment, you are working individually. However, GitHub stil
 2. Click on the HelloWorld.md file
 3. Click the small ‘edit’ pencil icon in the top right
 4. Add a Markdown text to the top of the file and click the ‘Commit Changes’ button at the bottom of the screen
-5. This will have changed the HelloWorld.md file on the server but not on your local environment. To fetch these changes use the `git pull` command from your terminal
+5. This will have changed the HelloWorld.md file on the server but not on your local environment. To fetch these changes, use the `git pull` command from your terminal
 6. Confirm that your local version of HelloWorld.md now has the changes you made on the web page
 
 
@@ -163,7 +168,7 @@ git checkout [branch_name]        # Switch to an existing branch
 1. Make your new branch with `git checkout -b first_new_branch`
 2. List your branches to see that you have indeed swapped (use the above commands)
 3. Open the HelloWorld.md file and add some more text
-4. Try to push your changes to the server using the commands you learnt (git add, commit and push) in the Section "Make your first commit"
+4. Try to push your changes to the server using the commands you learnt (git add, commit and push) in the Section “Make your first commit”
 5. The above step should have given you the following error:
 
 `fatal: The current branch first_new_branch has no upstream branch.`
@@ -180,7 +185,7 @@ Note: The final step above must be run on the 1st push to every new branch that 
 
 Merging branches is used to combine the work done on two different branches and is where gits magic really comes in. Git will compare the changes done on both branches and decide (based on what changes were done to what sections of the file and when) what to keep. Merges are most often done when a feature branch is complete and ready to be integrated with the master branch.
 
-Since we have finished all that we are going to do (and think there are no bugs) on our first_new_branch we can merge it back into master. It is a strong recommendation to have a version of the code that at least runs on master so people are not completely blocked. (DO NOT PUSH BROKEN CODE TO MASTER)
+Since we have finished all that we will do (and think there are no bugs) on our first_new_branch we can merge it back into master. It is a strong recommendation to have a version of the code that at least runs on master, so people are not completely blocked. (DO NOT PUSH BROKEN CODE TO MASTER)
 
 Another recommendation is to merge master into your branch before merging your branch into master as this will ensure that any merge into master will go smoothly.
 
@@ -188,7 +193,7 @@ Commands for merging two branches:
 
 `git merge [target]` # Merge the target branch into current
 
-Note: A successful merge automatically uses the commits from the source branch. This means that the commits have already been made, you just need to push these to the server (git push)
+Note: A successful merge automatically uses the commits from the source branch. This means that the commits have already been made. You just need to push these to the server (git push)
 
 1. Switch back to the master branch using one of the commands from the above section
 2. Merge in the changes you made in the other branch
@@ -197,11 +202,11 @@ Note: A successful merge automatically uses the commits from the source branch. 
 
 ## Engineer a merge conflict
 
-Merge conflicts are the one necessary downside to git. Luckily, they can be avoided most of the time through good use of techniques like branches and regular commits, pushes and pulls. They happen when git cannot work out which particular change to a file you really want.
+Merge conflicts are the one necessary downside to git. Luckily, they can be avoided most of the time by using techniques like branches and regular commits, pushes and pulls. They happen when git cannot work out which particular change to a file you want.
 
 A conflict happens, for instance, when two users edit the same line of code and git will not know which of these changes should remain or be discarded. As we are now working as single users, we will have to simulate a conflict by changing a file using our local repository and GitHub web interface.
 
-For this step we will engineer one so you can get a taste of what they are, how they occur and how to fix them. This will be the LAST time you will want one. The process may seem involved but it is quite common when multiple people are working at a time.
+For this step, we will engineer one, so you can get a taste of what they are, how they occur and how to fix them. This will be the LAST time you will want one. The process may seem involved, but it is quite common when multiple people are working at a time.
 
 1. Change line 1 of HelloWorld.md to `# This line will conflict with another change`
 2. Add, commit and push your changes to master
@@ -216,7 +221,7 @@ This sequence of steps should make a merge conflict at the first line of HelloWo
 
 Resolving a merge conflict is as simple as editing the file normally, choosing what you want to have in the places git wasn’t sure.
 
-This is a straightforward example, but merge conflicts can be large and in many different places across a file/repo. If possible, avoid merge conflicts. This can be done by regularly pulling from the server to update your local copy and by making your branches in such a way that they handle only one feature/section of the code.
+This is a straightforward example, but merge conflicts can be large and in many different places across a file/repo. If possible, avoid merge conflicts. This can be done by regularly pulling from the server to update your local copy and making your branches so that they handle only one feature/section of the code.
 
 A merge conflict is physically shown in the file in which it occurs, in our case, HelloWorld.md.
 
@@ -232,31 +237,35 @@ E.g.
 This line could be merged automatically.
 There was no change here either
 <<<<<<< current:sample.txt
-Merges are too hard. This change was on the 'merged into' branch
+Merges are too hard. This change was on the ‘merged into’ branch
 =======
-Merges are easy. This change was made on the 'merged' branch
+Merges are easy. This change was made on the ‘merged’ branch
 >>>>>>> target:sample.txt
 This is another line that could be merged automatically
 ```
 
-This above example could be solved in many ways, one way would be to just use the changes made on the target branch and delete those made on the current branch. Once we have decided, we just need to remove the syntax. The resolved file would be as follows
+The above example could be solved in many ways. One way would be to use the changes made on the target branch and delete those made on the current branch. Once we have decided, we need to remove the syntax. The resolved file would be as follows
 
 ```
 This line could be merged automatically.
 There was no change here either
-Merges are easy. This change was made on the 'merged' branch
+Merges are easy. This change was made on the ‘merged’ branch
 This is another line that could be merged automatically
 ```
 
-We would then just commit the resolved file and the merge conflict is finished!
+We would then commit the resolved file, and the merge conflict is finished!
 
 1. Open the HelloWorld.md file and decide which change you want to keep
 2. Remove the merge conflict syntax
 3. Add, commit and push the resolved merge conflict
 
+# What is next?
+
+Now that you understand git and GitHub, clone the [course repository](https://github.com/UNSW-ZZSC9020/project) and access the data to start working on your project.
+
 # Other resources
 
-There are many resources online about Git and GitHub. Many IDEs (Integrated Development Environments) have integration with Git in their interfaces, and using Git becomes simple as clicking in a button. However, it is good to know what happens behind the interface.
+There are many resources online about Git and GitHub. Many IDEs (Integrated Development Environments) have integration with Git in their interfaces, and using Git becomes simple as clicking a button. However, it is good to know what happens behind the interface.
 
 We are some additional resources online:
 
